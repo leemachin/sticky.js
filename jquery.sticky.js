@@ -4,6 +4,18 @@ var req = function ($) {
         nextVisible = elem.siblings().first(':visible'),
         stuck = false,
         height = 0
+        
+    // http://davidwalsh.name/ways-css-javascript-interact
+    var addCSSRule = function (sheet, selector, rules, index) {
+      if (sheet.insertRule) {
+        sheet.insertRule(selector + '{ ' + rules + ' }', index)
+      } else {
+        sheet.addRule(selector, rules, index)
+      }
+    }
+    
+    addCSSRule(document.stylesheets[0], '.stuck', 'position: fixed; top: 0; z-index: 5')
+    addCSSRule(document.stylesheets[0], '.stuck-offset', 'margin-top: ' + elem.outerHeight())
   
     if (opts.offsetFrom) {
       // offsetFrom can contain multiple elements, so get the total outerHeight
