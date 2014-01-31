@@ -20,7 +20,7 @@ $('.header').sticky({
 
 ## Advanced Usage
 
-You have a header, but there are more than one things above it, and they might not always be visible?
+You have a header, but there is more than one element above it, and some might not always be visible?
 
 ```javascript
 $('.header').sticky({
