@@ -14,8 +14,8 @@
       }
     }
     
-    addCSSRule(document.stylesheets[0], '.stuck', 'position: fixed; top: 0; z-index: 5')
-    addCSSRule(document.stylesheets[0], '.stuck-offset', 'margin-top: ' + elem.outerHeight())
+    addCSSRule(document.styleSheets[0], '.stuck', 'position: fixed; top: 0; z-index: 5')
+    addCSSRule(document.styleSheets[0], '.stuck-offset', 'margin-top: ' + elem.outerHeight())
   
     if (opts.offsetFrom) {
       // offsetFrom can contain multiple elements, so get the total outerHeight
