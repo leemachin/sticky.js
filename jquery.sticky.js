@@ -1,4 +1,4 @@
-var req = function ($) {
+(function ($) {
   $.fn.sticky = function (opts) {
     var elem = $(this),
         nextVisible = elem.siblings().first(':visible'),
@@ -43,13 +43,4 @@ var req = function ($) {
       }
     })
   }
-}
-
-// So you can use require.js
-(function (req) {
-  if (typeof define === 'function' && define.amd) {
-    return req(['jQuery'], sticky)
-  } else {
-    return req(jQuery)
-  }
-})(req)
+})(jQuery)
