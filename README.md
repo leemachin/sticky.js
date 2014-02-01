@@ -1,29 +1,13 @@
 # sticky.js
 
-Sticky headers, done as simply and as smoothly as possible, with no jumping when the transition occurs.
+Sticky elements, done as simply and as smoothly as possible, with no jumping when the transition occurs.
 
-## Basic Usage
+## Usage
 
 ```javascript
 $('.header').sticky()
 ```
 
-## Intermediate Usage
+## Customisation
 
-You have a header, but there's something else above it?
-
-```javascript
-$('.header').sticky({
-  offsetFrom: $('.previous-element')
-})
-```
-
-## Advanced Usage
-
-You have a header, but there is more than one element above it, and some might not always be visible?
-
-```javascript
-$('.header').sticky({
-  offsetFrom: $('.previous-element, .other-previous-element')
-})
-```
+Sticky adds a couple of CSS classes to your stylesheet. You can change the appearance of stuck elements by customising `.stuck` in your CSS. Be careful when playing with margins or changing the size of the element!
