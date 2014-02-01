@@ -29,11 +29,13 @@
   
     $(window).on('scroll', function () {
       if ($(this).scrollTop() > heightOffset(elem)) {
-        if (!stuck) {
-          elem.addClass('stuck')
-          nextVisible.css('margin-top', elem.outerHeight())
-          stuck = true
-        }
+        
+        if (stuck) return;
+        
+        elem.addClass('stuck')
+        nextVisible.css('margin-top', elem.outerHeight())
+        stuck = true
+        
       } else {
         elem.removeClass('stuck')
         nextVisible.css('margin-top', "")
