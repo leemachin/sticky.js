@@ -21,6 +21,7 @@
   
   $.fn.sticky = function () {
     var elem = $(this),
+        nextVisible = elem.siblings().first(':visible'),
         stuck = false,
         defaultHeight = elem.outerHeight(),
         styleSheet = document.styleSheets[0]
