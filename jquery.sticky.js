@@ -9,36 +9,34 @@
     }   
   }
   
-  function heightOffset (elem, defaultHeight) {
+  function heightOffset (elem) {
     var height = 0
     
     elem.prevAll(':visible').each(function (_, sibling) {
       height += $(sibling).outerHeight()
     })
     
-    return height || defaultHeight
+    return height || elem.outerHeight()
   }
   
   $.fn.sticky = function () {
     var elem = $(this),
         nextVisible = elem.siblings().first(':visible'),
         stuck = false,
-        defaultHeight = elem.outerHeight(),
         styleSheet = document.styleSheets[0]
         
     addCSSRule(styleSheet, '.stuck', 'position: fixed !important; top: 0 !important; z-index: 10')
-    addCSSRule(styleSheet, '.stuck-offset', 'margin-top: ' + defaultHeight ' !important')
   
     $(window).on('scroll', function () {
-      if ($(this).scrollTop() > heightOffset(elem, defaultHeight)) {
+      if ($(this).scrollTop() > heightOffset(elem)) {
         if (!stuck) {
           elem.addClass('stuck')
-          nextVisible.addClass('stuck-offset')
+          nextVisible.css('margin-top', elem.outerHeight())
           stuck = true
         }
       } else {
         elem.removeClass('stuck')
-        nextVisible.removeClass('stuck-offset')
+        nextVisible.css('margin-top', "")
         stuck = false
       }
     })
