@@ -25,8 +25,8 @@
         defaultHeight = elem.outerHeight(),
         styleSheet = document.styleSheets[0]
         
-    addCSSRule(styleSheet, '.stuck', 'position: fixed; top: 0; z-index: 10')
-    addCSSRule(styleSheet, '.stuck-offset', 'margin-top: ' + elem.outerHeight())
+    addCSSRule(styleSheet, '.stuck', 'position: fixed !important; top: 0 !important; z-index: 10')
+    addCSSRule(styleSheet, '.stuck-offset', 'margin-top: ' + defaultHeight ' !important')
   
     $(window).on('scroll', function () {
       if ($(this).scrollTop() > heightOffset(elem, defaultHeight)) {
