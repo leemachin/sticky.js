@@ -10,13 +10,7 @@
   }
   
   function heightOffset (elem) {
-    var height = 0
-    
-    elem.prevAll(':visible').each(function (_, sibling) {
-      height += $(sibling).outerHeight()
-    })
-    
-    return height || elem.outerHeight()
+    return elem.offset.top() || elem.outerHeight()
   }
   
   $.fn.sticky = function () {
