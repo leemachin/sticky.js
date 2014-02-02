@@ -10,7 +10,7 @@
   }
   
   function heightOffset (elem) {
-    return elem.offset.top() || elem.outerHeight()
+    return elem.offset().top || elem.outerHeight()
   }
   
   $.fn.sticky = function () {
