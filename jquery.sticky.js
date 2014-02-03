@@ -10,8 +10,12 @@
   }
 
   $.fn.sticky = function () {
-    var elem = $(this),
-        initialOffset = elem.offset().top,
+
+    var elem = $(this)
+
+    if (elem.css('position') == 'sticky' || elem.css('position') == '-webkit-sticky') return;
+
+    var initialOffset = elem.offset().top,
         nextVisible = elem.siblings().first(':visible'),
         stuck = false,
         styleSheet = document.styleSheets[0]
