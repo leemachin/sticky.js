@@ -1,26 +1,16 @@
 (function ($) {
 
-  // http://davidwalsh.name/ways-css-javascript-interact
-  function addCSSRule (sheet, selector, rules, index) {
-   if (sheet.insertRule) {
-      sheet.insertRule(selector + '{ ' + rules + ' }', index)
-    } else {
-      sheet.addRule(selector, rules, index)
-    }
+  function addCSSRule (selector, rules) {
+    $('head').append('<style type="text/css">' + selector + ' { ' + rules + ' }</style>');
   }
 
   $.fn.sticky = function () {
-
-    var elem = $(this)
-
-    if (elem.css('position') == 'sticky' || elem.css('position') == '-webkit-sticky') return;
-
-    var initialOffset = elem.offset().top,
+    var elem = $(this),
+        initialOffset = elem.offset().top,
         nextVisible = elem.siblings().first(':visible'),
-        stuck = false,
-        styleSheet = document.styleSheets[0]
+        stuck = false
 
-    addCSSRule(styleSheet, '.stuck', 'position: fixed !important; top: 0 !important; z-index: 10')
+    addCSSRule('.stuck', 'position: fixed !important; top: 0 !important; z-index: 10')
 
     $(window).on('scroll', function () {
       var currentPosition = $(window).scrollTop(),
