@@ -28,14 +28,14 @@
         // The page has scrolled past the top position of the element, so fix it and
         // apply its height as a margin to the next visible element so it doesn't jump
         elem.addClass('stuck')
-        nextVisible.css('margin-top', elem.outerHeight())
+        nextVisible.css('padding-top', elem.outerHeight())
         stuck = true
 
       } else {
 
         // Unstick, because the element can now rest in its original position
         elem.removeClass('stuck')
-        nextVisible.css('margin-top', "")
+        nextVisible.css('padding-top', "")
         stuck = false
       }
     })
