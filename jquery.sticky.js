@@ -34,6 +34,8 @@
 
       } else {
 
+        if(!stuck) return;
+
         // Unstick, because the element can now rest in its original position
         elem.removeClass('stuck')
         wedge.css('height', '')
