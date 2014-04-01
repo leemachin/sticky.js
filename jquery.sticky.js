@@ -5,12 +5,13 @@
   }
 
   $.fn.sticky = function () {
+    addCSSRule('.stuck', 'position: fixed !important; top: 0 !important; z-index: 10')
+    addCSSRule('.stuck-wedge', 'padding: 0 !important; margin: 0 !important; height: 0')
+
     var elem = $(this),
         initialOffset = elem.offset().top,
-        nextVisible = elem.siblings().first(':visible'),
+        wedge = $('<div class="stuck-wedge"></div>').prependTo(elem.parent()),
         stuck = false
-
-    addCSSRule('.stuck', 'position: fixed !important; top: 0 !important; z-index: 10')
 
     $(window).on('scroll', function () {
       var currentPosition = $(window).scrollTop(),
@@ -28,14 +29,14 @@
         // The page has scrolled past the top position of the element, so fix it and
         // apply its height as a margin to the next visible element so it doesn't jump
         elem.addClass('stuck')
-        nextVisible.css('padding-top', elem.outerHeight())
+        wedge.css('height', elem.height() + 'px')
         stuck = true
 
       } else {
 
         // Unstick, because the element can now rest in its original position
         elem.removeClass('stuck')
-        nextVisible.css('padding-top', "")
+        wedge.css('height', '')
         stuck = false
       }
     })
