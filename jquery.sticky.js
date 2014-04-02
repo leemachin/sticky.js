@@ -1,22 +1,20 @@
 (function ($) {
 
-  function addCSSRule (selector, rules) {
-    $('head').append('<style type="text/css">' + selector + ' { ' + rules + ' }</style>');
-  }
-
   function addCSS (styles) {
-    styles = styles.reduce(function (memo, style) {
-      return memo + style.selector + "{" + style.rules + "} "
-    }, "")
+    var styleSheet = ""
 
-    $('head').append('<style type="text/css">' + styles + '</style>')
+    for (var style in styles) {
+      styleSheet += style + "{" + styles[style] + "} "
+    }
+
+    $('head').append('<style type="text/css">' + styleSheet + '</style>')
   }
 
   $.fn.sticky = function () {
-    addCSS([
-      { selector: '[data-stuck]', rules: 'position: fixed !important; top: 0 !important; z-index: 10;' },
-      { selector: '[data-wedge]', rules: 'padding: 0 !important; margin: 0 !important; height: 0;' }
-    ])
+    addCSS({
+      '[data-stuck]': 'position: fixed !important; top: 0 !important; z-index: 10;',
+      '[data-wedge]': 'padding: 0 !important; margin: 0 !important; height: 0;'
+    })
 
     var elem = $(this),
         initialOffset = elem.offset().top,
