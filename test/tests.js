@@ -19,7 +19,7 @@
       scrollerWindow.scrollTo(0, 0)
 
       $(scrollerWindow).one('scroll', function () {
-        ok(header.hasClass('stuck'), "header has stuck class")
+        ok(header.data('stuck'), "header has stuck class")
         ok(header.offset().top == scrollPos, "header is at top of page")
 
         start()
@@ -36,7 +36,7 @@
       scrollerWindow.scrollTo(0, scrollPos)
 
       $(scrollerWindow).one('scroll', function () {
-        ok(!header.hasClass('stuck'), "header doesn't have stuck class any more")
+        ok(!header.data('stuck'), "header doesn't have stuck class any more")
         ok(header.offset().top == initialOffset, "header is at original position")
 
         start()
