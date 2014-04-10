@@ -10,4 +10,4 @@ $('.header').sticky()
 
 ## Customisation
 
-Sticky adds a couple of CSS classes to your stylesheet. You can change the appearance of stuck elements by customising `.stuck` in your CSS. 
+Sticky adds a couple of CSS classes to your stylesheet. You can change the appearance of stuck elements by customising `[data-stuck]` in your CSS. 
