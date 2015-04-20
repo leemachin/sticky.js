@@ -36,7 +36,7 @@
 
         // The page has scrolled past the top position of the element, so fix it and
         // apply its height as a margin to the next visible element so it doesn't jump
-        elem.data('stuck', true)
+        elem.attr('data-stuck', '')
         wedge.css('height', elem.height() + 'px')
         stuck = true
 
@@ -45,7 +45,7 @@
         if(!stuck) return;
 
         // Unstick, because the element can now rest in its original position
-        elem.removeData('stuck')
+        elem.removeAttr('data-stuck')
         wedge.css('height', '')
         stuck = false
       }
