@@ -10,14 +10,22 @@
     $('head').append('<style type="text/css">' + styleSheet + '</style>')
   }
 
-  $.fn.sticky = function () {
-    addCSS({
-      '[data-stuck]': 'position: fixed !important; top: 0 !important; z-index: 10;',
-      '[data-wedge]': 'padding: 0 !important; margin: 0 !important; height: 0;'
-    })
+  var addCSSdone = false;
 
-    var elem = $(this),
-        initialOffset = elem.offset().top,
+  $.fn.sticky = function () {
+    if (!addCSSdone) {
+      addCSS({
+        '[data-stuck]': 'position: fixed !important; top: 0 !important; z-index: 10;',
+        '[data-wedge]': 'padding: 0 !important; margin: 0 !important; height: 0;'
+      })
+      addCSSdone = true;
+    }
+
+    var elem = $(this);
+
+    if (elem.data('alreadySticky')) return;
+
+    var initialOffset = elem.offset().top,
         wedge = $('<div data-wedge></div>').prependTo(elem.parent()),
         stuck = false
 
@@ -50,5 +58,9 @@
         stuck = false
       }
     })
+
+    elem.data('alreadySticky', true);
+
+    return elem;
   }
 })(jQuery)
